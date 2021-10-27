@@ -5,7 +5,9 @@ edition = "2018"
 
 [dependencies]
 ff = "0.9"
-halo2 = { git = "https://github.com/zcash/halo2", branch = "main" }
+halo2 = { git = "https://github.com/zcash/halo2", rev = "80993da1e6b65440aaf5bee9fb4ae58900e72462" }
 lazy_static = "1.4.0"
 rand = "0.8"
 rand_chacha = "0.3.0"
+# Temporary workaround for https://github.com/myrrlyn/funty/issues/3
+funty = "=1.1.0"

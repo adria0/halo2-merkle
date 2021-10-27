@@ -449,8 +449,7 @@ fn main() {
     let res = prover.verify();
     assert!(res.is_err());
     if let Err(errors) = res {
-        assert_eq!(errors.len(), 1);
-        if let VerifyFailure::Gate { gate_name, row, .. } = errors[0] {
+        if let VerifyFailure::Gate { gate_name, row, .. } = errors {
             assert_eq!(gate_name, "public input");
             assert_eq!(row, 0);
         } else {
@@ -465,8 +464,7 @@ fn main() {
     let res = prover.verify();
     assert!(res.is_err());
     if let Err(errors) = res {
-        assert_eq!(errors.len(), 1);
-        if let VerifyFailure::Gate { gate_name, row, .. } = errors[0] {
+        if let VerifyFailure::Gate { gate_name, row, .. } = errors {
             assert_eq!(gate_name, "public input");
             assert_eq!(row, LAST_ROW);
         } else {
@@ -483,18 +481,11 @@ fn main() {
     let res = prover.verify();
     assert!(res.is_err());
     if let Err(errors) = res {
-        assert_eq!(errors.len(), 2);
-        if let VerifyFailure::Gate { gate_name, row, .. } = errors[0] {
+        if let VerifyFailure::Gate { gate_name, row, .. } = errors {
             assert_eq!(gate_name, "boolean constrain");
             assert_eq!(row, 0);
         } else {
             panic!("expected boolean constrain gate failure");
-        }
-        if let VerifyFailure::Gate { gate_name, row, .. } = errors[1] {
-            assert_eq!(gate_name, "swap");
-            assert_eq!(row, 0);
-        } else {
-            panic!("expected swap gate failure");
         }
     }
 
@@ -506,8 +497,7 @@ fn main() {
     let res = prover.verify();
     assert!(res.is_err());
     if let Err(errors) = res {
-        assert_eq!(errors.len(), 1);
-        if let VerifyFailure::Gate { gate_name, row, .. } = errors[0] {
+        if let VerifyFailure::Gate { gate_name, row, .. } = errors{
             assert_eq!(gate_name, "public input");
             assert_eq!(row, LAST_ROW);
         } else {
